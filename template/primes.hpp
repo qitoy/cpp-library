@@ -2,14 +2,41 @@
 
 #include<vector>
 #include<algorithm> // sort, min
+#include<cmath> // abs
 #include<numeric> // gcd
-#include<random> // mt19937_64
 
 namespace qitoy {
 
 	using i32 = int;
 	using i64 = long long;
+	using u64 = unsigned long long;
 	using i128 = __int128;
+	
+	namespace internal {
+
+		u64 rnd() { // Xorshift
+			static u64 x=88172645463325252ULL;
+			x=x^(x<<7);
+			return x=x^(x>>9);
+		}
+
+		i64 findfactor(i64 N) {
+			if(N%2==0) return 2;
+			// Pollard's rho algorithm
+			i64 d=1;
+			do {
+				i64 x,y, c=rnd()%(N-1)+1;
+				x=y=rnd()%(N-1)+1;
+				auto f=[&](i64 X){return ((i128)X*X+c)%N;};
+				do {
+					x=f(x); y=f(f(y));
+					d=std::gcd(std::abs(x-y),N);
+				} while(d==1);
+			} while(d==N);
+			return d;
+		}
+
+	} // namespace internal
 
 	namespace primes {
 
@@ -36,52 +63,16 @@ namespace qitoy {
 			return true;
 		}
 
-		std::vector<i64> factor(i64 a) {
-			if(a==1) return {};
-			std::vector<i64> vec; std::vector<i64> ans;
-			vec.push_back(a);
-			std::mt19937_64 rnd;
-			while(!vec.empty()) {
-				i64 N=vec.back();
-				vec.pop_back();
-				if(test(N)) {
-					ans.push_back(N);
-					continue;
-				}
-				if(N%2==0) {
-					ans.push_back(2);
-					vec.push_back(N/2);
-					continue;
-				}
-				i64 x,y,g,c,r,q,ys;
-				const i64 m=128;
-				auto f=[&](i64 X){ return ((i128)X*X%N+c)%N; };
-				do {
-					y=rnd()%(N+1); c=rnd()%(N-1)+1; g=r=q=1;
-					do {
-						x=y;
-						for(i32 i=0; i<r; i++) y=f(y);
-						i64 k=0;
-						do {
-							ys=y;
-							for(i32 i=0; i<std::min(m,r-k); i++) {
-								y=f(y);
-								q=(i128)q*std::abs(x-y)%N;
-							}
-							g=std::gcd(q,N);
-							k+=m;
-						} while(k<r&&g==1);
-						r<<=1;
-					} while(g==1);
-					if(g==N) do {
-						ys=f(ys);
-						g=std::gcd(std::abs(x-ys),N);
-					} while(g==1);
-				} while(g==N);
-				vec.push_back(g); vec.push_back(N/g);
+		std::vector<i64> factorize(i64 N) {
+			if(N==1) return {};
+			std::vector<i64> vec={N};
+			for(std::size_t i=0; i<vec.size();) {
+				if(test(vec[i])) {i++; continue;}
+				i64 d=internal::findfactor(vec[i]);
+				vec[i]/=d; vec.push_back(d);
 			}
-			std::sort(ans.begin(),ans.end());
-			return ans;
+			std::sort(vec.begin(), vec.end());
+			return vec;
 		}
 
 		std::vector<bool> sieve(i32 N) {
