@@ -11,7 +11,7 @@ namespace qitoy {
 	using i64 = long long;
 	using u64 = unsigned long long;
 	using i128 = __int128;
-	
+
 	namespace internal {
 
 		u64 rnd() { // Xorshift
@@ -22,18 +22,29 @@ namespace qitoy {
 
 		i64 findfactor(i64 N) {
 			if(N%2==0) return 2;
-			// Pollard's rho algorithm
-			i64 d=1;
+			// Pollard's rho algorithm, improved by Brent
+			i64 G=1;
 			do {
-				i64 x,y, c=rnd()%(N-1)+1;
-				x=y=rnd()%(N-1)+1;
+				i64 x,y=rnd()%(N-1)+1,q=1,ys,c=rnd()%(N-1)+1; i32 r=1,k;
 				auto f=[&](i64 X){return ((i128)X*X+c)%N;};
+				constexpr i32 m=128;
 				do {
-					x=f(x); y=f(f(y));
-					d=std::gcd(std::abs(x-y),N);
-				} while(d==1);
-			} while(d==N);
-			return d;
+					x=y;
+					for(i32 i=0; i<r; i++) y=f(y);
+					k=0;
+					do {
+						ys=y;
+						for(i32 i=0; i<std::min(m,r-k); i++) {
+							y=f(y); q=(i128)q*std::abs(x-y)%N;
+						}
+						G=std::gcd(q,N); k+=m;
+					} while(k<r and G==1); r<<=1;
+				} while (G==1);
+					if(G==N) do {
+						ys=f(ys); G=std::gcd(std::abs(x-ys),N);
+					} while(G==1);
+			} while(G==N);
+			return G;
 		}
 
 	} // namespace internal
@@ -44,7 +55,7 @@ namespace qitoy {
 			if(N<=2) return N==2;
 			if(N%2==0) return false;
 			i64 d=N-1;
-		   	i32 r=0;
+			i32 r=0;
 			while(d%2==0) {d>>=1; r++;}
 			for(i64 a : {2,3,5,7,11,13,17,19,23,29,31,37}) { // A014233 - OEIS
 				if(N<=a) break;
