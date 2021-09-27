@@ -2,8 +2,9 @@
 
 #include<vector>
 #include<algorithm> // sort, min
-#include<cmath> // abs
+#include<cmath> // abs, sqrt, cbrt
 #include<numeric> // gcd
+#include"atcoder/fenwicktree" 
 
 namespace qitoy {
 
@@ -95,7 +96,44 @@ namespace qitoy {
 			return _isPrime;
 		}
 
-		// i64 pi(i64 N) { } 
+		i64 pi(i64 N) { // ref : Meissel–Lehmer algorithm
+			i32 a=std::cbrt(N), b=std::sqrt(N), c=N/a;
+			std::vector<i32> f(a+1, 1<<30), mu(a+1,1), P;
+			for(i32 i=2; i<=a; i++) if(f[i]==1<<30) { // initial preprocessing 
+				f[i]=i;
+				P.push_back(i);
+				for(i32 j=1; i*j<=a; j++) {
+					f[i*j]=std::min(f[i*j],i);
+					mu[i*j]*=j%i==0?0:-1;
+				}
+			}
+			i32 pia=P.size();
+			i64 ret=pia-1;
+			for(i32 i=1; i<=a; i++) ret+=mu[i]*(N/i); // ordinary leaves
+			std::vector<bool> S(c+1,true);
+			S[0]=S[1]=false;
+			atcoder::fenwick_tree<i32> phi(c+1);
+			for(i32 i=0; i<pia; i++) { // special leaves
+				for(i32 j=P[i]+1; j<=a; j++) {
+					if(f[j]>P[i] && j*P[i]>a)
+						ret+=-mu[j]*(N/(j*P[i])-phi.sum(0,N/(j*P[i])+1));
+				}
+				phi.add(P[i],1);
+				S[P[i]]=false;
+				for(i32 j=P[i]; P[i]*j<=c; j++) {
+					if(S[P[i]*j]) phi.add(P[i]*j,1);
+					S[P[i]*j]=false;
+				}
+			}
+			for(i32 i=a+1; i<=b; i++) if(S[i]) P.push_back(i);
+			i32 pib=P.size(), pix=P.size();
+			for(i32 i=pib, j=b+1; i-->pia;) { // P_2
+				for(; j<=N/P[i]; j++) if(S[j]) pix++;
+				ret-=pix;
+			}
+			ret+=-pia*(pia-1)/2+pib*(pib-1)/2;
+			return ret;
+		}
 
 	} // namespace primes
 
