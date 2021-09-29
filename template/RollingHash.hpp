@@ -14,8 +14,7 @@ namespace qitoy {
 	class RollingHash {
 		public:
 			RollingHash(std::string const& S)
-				: _n(S.size()), _base1(_n+1), _base2(_n+1),
-				_hash1(_n+1), _hash2(_n+1) {
+				: _n(S.size()), _base1(_n+1), _base2(_n+1), _hash1(_n+1), _hash2(_n+1) {
 					std::random_device rnd;
 					static u64 b1=rnd()+128, b2=rnd()+128;
 					_base1[0]=_base2[0]=1;
