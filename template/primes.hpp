@@ -126,7 +126,7 @@ namespace qitoy {
 				}
 			}
 			for(i32 i=a+1; i<=b; i++) if(S[i]) P.push_back(i);
-			i32 pib=P.size(), pix=P.size();
+			i64 pib=P.size(), pix=P.size();
 			for(i32 i=pib, j=b+1; i-->pia;) { // P_2
 				for(; j<=N/P[i]; j++) if(S[j]) pix++;
 				ret-=pix;
