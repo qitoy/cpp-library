@@ -57,7 +57,7 @@ namespace qitoy {
 		i32 r=0;
 		while(d%2==0) {d>>=1; r++;}
 		for(i64 a : {2, 325, 9375, 28178, 450775, 9780504, 1795265022}) {
-			if(std::gcd(N,a)!=1) continue;
+			if(a%N==0) return true;
 			i64 x=1;
 			for(i64 t=d; t; t>>=1) { // x=a^d mod N
 				if(t%2==1) x=(i128)x*a%N;
