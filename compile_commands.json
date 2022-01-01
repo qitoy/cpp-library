@@ -1,0 +1,18 @@
+[
+	{
+		"directory": "~/AtCoder/C++",
+		"arguments": [
+	"g++-11",
+	"-std=gnu++17",
+	"-Wall",
+	"-Wextra",
+	"-O2",
+	"-DLOCAL",
+	"main.cpp",
+	"-o",
+	"program",
+	"-g"
+	],
+	"file": "main.cpp"
+	}
+]
