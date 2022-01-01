@@ -1,136 +1,126 @@
-#pragma once 
+// {{{ prime_test
 
-#include<vector>
-#include<algorithm> // sort, min
-#include<cmath> // abs, sqrt, cbrt
-#include<numeric> // gcd
-#include"atcoder/fenwicktree" 
-
-namespace qitoy {
-
-	namespace {
-
-		using i32 = int;
-		using i64 = long long;
-		using u64 = unsigned long long;
-		using i128 = __int128;
-
-		u64 rnd() { // Xorshift
-			static u64 x=88172645463325252ULL;
-			x=x^(x<<7);
-			return x=x^(x>>9);
+constexpr bool prime_test(const long long N) { // Miller-Rabin test
+	if(N<=2) return N==2;
+	if(N%2==0) return false;
+	long long d=N-1;
+	int r=0;
+	while(d%2==0) {d>>=1; r++;}
+	for(long long a : {2, 325, 9375, 28178, 450775, 9780504, 1795265022}) {
+		if(a%N==0) return true;
+		long long x=1;
+		for(long long t=d; t; t>>=1) { // x=a^d mod N
+			if(t%2==1) x=(__int128)x*a%N;
+			a=(__int128)a*a%N;
 		}
+		if(x==1 or x==N-1) continue;
+		for(int i=0; i<r; i++) {
+			x=(__int128)x*x%N;
+			if(x==N-1) break;
+			if(x==1 or i==r-1) return false;
+		}
+	}
+	return true;
+}
 
-		i64 findfactor(i64 N) {
-			if(N%2==0) return 2;
-			// Pollard's rho algorithm, improved by Brent
-			i64 G=1;
+// }}} prime_test
+
+// {{{ factorize
+
+long long findfactor(long long N) {
+	if(N%2==0) return 2;
+	// Pollard's rho algorithm, improved by Brent
+	long long G=1;
+	std::mt19937_64 rnd();
+	do {
+		long long x,y=rnd()%(N-1)+1,q=1,ys,c=rnd()%(N-1)+1; int r=1,k;
+		auto f=[&](long long X){return ((__int128)X*X+c)%N;};
+		constexpr int m=128;
+		do {
+			x=y;
+			for(int i=0; i<r; i++) y=f(y);
+			k=0;
 			do {
-				i64 x,y=rnd()%(N-1)+1,q=1,ys,c=rnd()%(N-1)+1; i32 r=1,k;
-				auto f=[&](i64 X){return ((i128)X*X+c)%N;};
-				constexpr i32 m=128;
-				do {
-					x=y;
-					for(i32 i=0; i<r; i++) y=f(y);
-					k=0;
-					do {
-						ys=y;
-						for(i32 i=0; i<std::min(m,r-k); i++) {
-							y=f(y); q=(i128)q*std::abs(x-y)%N;
-						}
-						G=std::gcd(q,N); k+=m;
-					} while(k<r and G==1); r<<=1;
-				} while (G==1);
-					if(G==N) do {
-						ys=f(ys); G=std::gcd(std::abs(x-ys),N);
-					} while(G==1);
-			} while(G==N);
-			return G;
-		}
+				ys=y;
+				for(int i=0; i<std::min(m,r-k); i++) {
+					y=f(y); q=(__int128)q*std::abs(x-y)%N;
+				}
+				G=std::gcd(q,N); k+=m;
+			} while(k<r and G==1); r<<=1;
+		} while (G==1);
+			if(G==N) do {
+				ys=f(ys); G=std::gcd(std::abs(x-ys),N);
+			} while(G==1);
+	} while(G==N);
+	return G;
+}
 
-	} // namespace
-
-	constexpr bool prime_test(const i64 N) { // Miller-Rabin test
-		if(N<=2) return N==2;
-		if(N%2==0) return false;
-		i64 d=N-1;
-		i32 r=0;
-		while(d%2==0) {d>>=1; r++;}
-		for(i64 a : {2, 325, 9375, 28178, 450775, 9780504, 1795265022}) {
-			if(a%N==0) return true;
-			i64 x=1;
-			for(i64 t=d; t; t>>=1) { // x=a^d mod N
-				if(t%2==1) x=(i128)x*a%N;
-				a=(i128)a*a%N;
-			}
-			if(x==1 or x==N-1) continue;
-			for(i32 i=0; i<r; i++) {
-				x=(i128)x*x%N;
-				if(x==N-1) break;
-				if(x==1 or i==r-1) return false;
-			}
-		}
-		return true;
+std::vector<long long> factorize(long long N) {
+	if(N==1) return {};
+	std::vector<long long> vec={N};
+	for(std::size_t i=0; i<vec.size();) {
+		if(prime_test(vec[i])) {i++; continue;}
+		long long d=findfactor(vec[i]);
+		vec[i]/=d; vec.push_back(d);
 	}
+	std::sort(vec.begin(), vec.end());
+	return vec;
+}
 
-	std::vector<i64> factorize(i64 N) {
-		if(N==1) return {};
-		std::vector<i64> vec={N};
-		for(std::size_t i=0; i<vec.size();) {
-			if(prime_test(vec[i])) {i++; continue;}
-			i64 d=findfactor(vec[i]);
-			vec[i]/=d; vec.push_back(d);
+// }}} factorize
+
+// {{{ prime_sieve
+
+std::vector<bool> prime_sieve(int N) {
+	std::vector<bool> _isPrime(N+1, true);
+	_isPrime[0]=_isPrime[1]=false;
+	for(int i=4; i<=N; i+=2) _isPrime[i]=false;
+	for(int i=3; i*i<=N; i+=2) if(_isPrime[i]) 
+		for(int j=i; i*j<=N; j+=2) _isPrime[i*j]=false;
+	return _isPrime;
+}
+
+// }}} prime_sieve
+
+// {{{ prime_pi
+
+long long prime_pi(long long N) { // ref : Meissel–Lehmer algorithm
+	int a=std::cbrt(N), b=std::sqrt(N), c=N/a;
+	std::vector<int> f(a+1, 1<<30), mu(a+1,1), P;
+	for(int i=2; i<=a; i++) if(f[i]==1<<30) { // initial preprocessing 
+		f[i]=i;
+		P.push_back(i);
+		for(int j=1; i*j<=a; j++) {
+			f[i*j]=std::min(f[i*j],i);
+			mu[i*j]*=j%i==0?0:-1;
 		}
-		std::sort(vec.begin(), vec.end());
-		return vec;
 	}
-
-	std::vector<bool> prime_sieve(i32 N) {
-		std::vector<bool> _isPrime(N+1, true);
-		_isPrime[0]=_isPrime[1]=false;
-		for(i32 i=4; i<=N; i+=2) _isPrime[i]=false;
-		for(i32 i=3; i*i<=N; i+=2) if(_isPrime[i]) 
-			for(i32 j=i; i*j<=N; j+=2) _isPrime[i*j]=false;
-		return _isPrime;
+	int pia=P.size();
+	long long ret=pia-1;
+	for(int i=1; i<=a; i++) ret+=mu[i]*(N/i); // ordinary leaves
+	std::vector<bool> S(c+1,true);
+	S[0]=S[1]=false;
+	atcoder::fenwick_tree<int> phi(c+1);
+	for(int i=0; i<pia; i++) { // special leaves
+		for(int j=P[i]+1; j<=a; j++) {
+			if(f[j]>P[i] && j*P[i]>a)
+				ret+=-mu[j]*(N/(j*P[i])-phi.sum(0,N/(j*P[i])+1));
+		}
+		phi.add(P[i],1);
+		S[P[i]]=false;
+		for(int j=P[i]; P[i]*j<=c; j++) {
+			if(S[P[i]*j]) phi.add(P[i]*j,1);
+			S[P[i]*j]=false;
+		}
 	}
-
-	i64 prime_pi(i64 N) { // ref : Meissel–Lehmer algorithm
-		i32 a=std::cbrt(N), b=std::sqrt(N), c=N/a;
-		std::vector<i32> f(a+1, 1<<30), mu(a+1,1), P;
-		for(i32 i=2; i<=a; i++) if(f[i]==1<<30) { // initial preprocessing 
-			f[i]=i;
-			P.push_back(i);
-			for(i32 j=1; i*j<=a; j++) {
-				f[i*j]=std::min(f[i*j],i);
-				mu[i*j]*=j%i==0?0:-1;
-			}
-		}
-		i32 pia=P.size();
-		i64 ret=pia-1;
-		for(i32 i=1; i<=a; i++) ret+=mu[i]*(N/i); // ordinary leaves
-		std::vector<bool> S(c+1,true);
-		S[0]=S[1]=false;
-		atcoder::fenwick_tree<i32> phi(c+1);
-		for(i32 i=0; i<pia; i++) { // special leaves
-			for(i32 j=P[i]+1; j<=a; j++) {
-				if(f[j]>P[i] && j*P[i]>a)
-					ret+=-mu[j]*(N/(j*P[i])-phi.sum(0,N/(j*P[i])+1));
-			}
-			phi.add(P[i],1);
-			S[P[i]]=false;
-			for(i32 j=P[i]; P[i]*j<=c; j++) {
-				if(S[P[i]*j]) phi.add(P[i]*j,1);
-				S[P[i]*j]=false;
-			}
-		}
-		for(i32 i=a+1; i<=b; i++) if(S[i]) P.push_back(i);
-		i64 pib=P.size(), pix=P.size();
-		for(i32 i=pib, j=b+1; i-->pia;) { // P_2
-			for(; j<=N/P[i]; j++) if(S[j]) pix++;
-			ret-=pix;
-		}
-		ret+=-pia*(pia-1)/2+pib*(pib-1)/2;
-		return ret;
+	for(int i=a+1; i<=b; i++) if(S[i]) P.push_back(i);
+	long long pib=P.size(), pix=P.size();
+	for(int i=pib, j=b+1; i-->pia;) { // P_2
+		for(; j<=N/P[i]; j++) if(S[j]) pix++;
+		ret-=pix;
 	}
+	ret+=-pia*(pia-1)/2+pib*(pib-1)/2;
+	return ret;
+}
 
-} // namespace qitoy
+// }}} prime_pi
