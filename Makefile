@@ -1,8 +1,8 @@
-g++_options = -std=gnu++17 -Wall -Wextra -O2 -DLOCAL
+options = -std=gnu++17 -Wall -Wextra -O2 -DLOCAL
 compiler = g++-11
 
 program : main.cpp
-	$(compiler) $(g++_options) $< -o $@ -g
+	$(compiler) $(options) $< -o $@ -g
 
 run : program
 	./program
