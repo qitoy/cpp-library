@@ -11,8 +11,6 @@ class RollingHash {
 	public:
 	RollingHash(std::string const& S)
 		: _n(S.size()), _base1(_n+1), _base2(_n+1), _hash1(_n+1), _hash2(_n+1) {
-			std::random_device rnd;
-			static u64 b1=rnd()+128, b2=rnd()+128;
 			_base1[0]=_base2[0]=1;
 			for(int i=0; i<_n; i++) {
 				_base1[i+1]=mul(_base1[i],b1);
@@ -32,9 +30,13 @@ class RollingHash {
 	private:
 	const u64 mod=(1ull<<61)-1;
 	int _n;
+	static u64 b1, b2;
 	std::vector<u64> _base1, _base2, _hash1, _hash2;
 	u64 mul(u128 a, u128 b) const {
 		u128 t=a*b; t=(t>>61)+(t&mod);
 		return t>=mod?t-mod:t;
 	}
 };
+
+unsigned long long RollingHash::b1=std::random_device()()+128,
+                   RollingHash::b2=std::random_device()()+128;
