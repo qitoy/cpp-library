@@ -19,11 +19,9 @@ struct input {
 	}
 };
 
-void scan(){}
-
-template<class T, class... U>
-void scan(T& t, U&... u) {
-	std::cin >> t; scan(u...);
+template<class... T>
+void scan(T&... a) {
+	(std::cin >> ... >> a);
 }
 
 template<class T>
@@ -44,6 +42,14 @@ using namespace std;
 using namespace atcoder;
 using ll=long long;
 #define all(c) begin(c), end(c)
+
+#define rep1(a)          for(int i = 0; i < a; i++)
+#define rep2(i, a)       for(int i = 0; i < a; i++)
+#define rep3(i, a, b)    for(int i = a; i < b; i++)
+#define rep4(i, a, b, c) for(int i = a; i < b; i += c)
+
+#define overload4(a, b, c, d, e, ...) e
+#define rep(...) overload4(__VA_ARGS__, rep4, rep3, rep2, rep1)(__VA_ARGS__)
 
 // }}} ------------------------------ end template ------------------------------
 
