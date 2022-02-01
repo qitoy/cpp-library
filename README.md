@@ -6,6 +6,3 @@ AtCoderで使うあれこれを保管する．template/以下にはLibrary Check
 
 [oj](https://github.com/online-judge-tools/oj)
 
-# ライセンス
-
-CC0
