@@ -7,8 +7,17 @@ program : main.cpp
 run : program
 	./program
 
-clean:
+clean :
 	rm -rf ./program ./program_debug
 
-.PHONY : run clean
+init :
+	rm -rf test/ && oj d $(url)
+
+test : program
+	oj t -N -c ./program
+
+submit : program
+	oj t -N -c ./program && oj s main.cpp
+
+.PHONY : run clean init test submit
 
