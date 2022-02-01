@@ -10,8 +10,7 @@
 	"-DLOCAL",
 	"main.cpp",
 	"-o",
-	"program",
-	"-g"
+	"program"
 	],
 	"file": "main.cpp"
 	}
