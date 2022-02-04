@@ -42,6 +42,7 @@ using namespace std;
 using namespace atcoder;
 using ll=long long;
 #define all(c) begin(c), end(c)
+#define rall(c) rbegin(c), rend(c)
 
 #define rep1(a)          for(int i = 0; i < a; i++)
 #define rep2(i, a)       for(int i = 0; i < a; i++)
