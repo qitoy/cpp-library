@@ -1,4 +1,4 @@
-// {{{ ----------------------------- begin template -----------------------------
+/*{{{ begin template */
 
 #include<bits/stdc++.h>
 #include<atcoder/all>
@@ -52,7 +52,7 @@ using ll=long long;
 #define overload4(a, b, c, d, e, ...) e
 #define rep(...) overload4(__VA_ARGS__, rep4, rep3, rep2, rep1)(__VA_ARGS__)
 
-// }}} ------------------------------ end template ------------------------------
+/*}}} end template */
 
 
 
