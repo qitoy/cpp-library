@@ -1,5 +1,3 @@
-// {{{ prime_pi
-
 long long prime_pi(long long N) { // ref : Meissel–Lehmer algorithm
 	int a=std::cbrt(N), b=std::sqrt(N), c=N/a;
 	std::vector<int> f(a+1, 1<<30), mu(a+1,1), P;
@@ -38,5 +36,3 @@ long long prime_pi(long long N) { // ref : Meissel–Lehmer algorithm
 	ret+=-pia*(pia-1)/2+pib*(pib-1)/2;
 	return ret;
 }
-
-// }}} prime_pi
