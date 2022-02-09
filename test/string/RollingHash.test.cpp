@@ -1,3 +1,4 @@
+#define PROBLEM "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_14_B"
 #include<bits/stdc++.h>
 #include"../../string/RollingHash.hpp"
 using namespace std;
