@@ -10,7 +10,7 @@ documentation_of: //tree/fenwicktree.hpp
 # 機能
 
 型`T`を`unsigned`に変換する機能を削除  
-各値は非負でなくてはならない
+`lower_bound`を使用する際は各値が非負でなくてはならない
 
 ## `add(p,x)`
 

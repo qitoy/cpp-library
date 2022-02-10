@@ -9,7 +9,6 @@ template <class T> struct fenwick_tree {
         p++;
         while (p <= _n) {
             data[p - 1] += x;
-			assert(0 <= data[p-1]);
             p += p & -p;
         }
     }
@@ -45,6 +44,7 @@ template <class T> struct fenwick_tree {
 				i += k;
 			}
 		}
+		assert(sum(i-1)<x and x<=sum(i));
 		return i;
 	}
 
