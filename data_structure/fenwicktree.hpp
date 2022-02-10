@@ -44,7 +44,7 @@ template <class T> struct fenwick_tree {
 				i += k;
 			}
 		}
-		assert(sum(i-1)<x and x<=sum(i));
+		// assert(sum(i-1)<x and x<=sum(i));
 		return i;
 	}
 
