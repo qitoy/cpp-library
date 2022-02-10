@@ -35,18 +35,7 @@ template <class T> struct fenwick_tree {
         return sum(r) - sum(l);
     }
 
-	int lower_bound(T x) {
-		if(x <= 0) return 0;
-		int i=0;
-		for(int k=1<<(32-__builtin_clz(_n)); k>0; k>>=1) {
-			if(i+k <= _n && data[i+k-1] < x) {
-				x -= data[i+k-1];
-				i += k;
-			}
-		}
-		// assert(sum(i-1)<x and x<=sum(i));
-		return i;
-	}
+	// int lower_bound(T x) { }
 
   private:
     int _n;

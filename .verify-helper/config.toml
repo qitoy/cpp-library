@@ -1,3 +1,4 @@
 [[languages.cpp.environments]]
 CXX = "g++"
 CXXFLAGS = ["-std=gnu++17", "-Wall", "-Wextra", "-DLOCAL"]
+
