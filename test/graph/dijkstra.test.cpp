@@ -14,7 +14,7 @@ int main(){
 		int s,t; long long d; cin >> s >> t >> d;
 		D.add_edge(s,t,d);
 	}
-	for (auto&& d : D.get_dists(r)) {
+	for (auto&& [d,v] : D.get_dists_and_preds(r)) {
 		if(d!=-1) cout << d;
 		else cout << "INF";
 		cout << '\n';

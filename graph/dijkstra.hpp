@@ -6,33 +6,35 @@ template<class T> struct dijkstra {
 			assert(0 <= from && from < _n);
 			assert(0 <= to && to < _n);
 			assert(0 <= weight);
-			_graph[from].emplace_back(to, weight);
+			_graph[from].emplace_back(weight, to);
 		}
 
-		std::vector<T> get_dists(int from) {
+		std::vector<std::pair<T,int>> get_dists_and_preds(int from) {
 			assert(0 <= from && from < _n);
-			std::vector<T> dist(_n, -1);
-			dist[from]=0;
-			auto comp = [](auto x, auto y){ return x.second > y.second; };
+			std::vector<std::pair<T,int>> dist_pred(_n, std::make_pair(-1,-1));
+			dist_pred[from]=std::make_pair(0,-1);
 			std::priority_queue<
-				std::pair<int,T>,
-				std::vector<std::pair<int,T>>,
-				decltype(comp)
-					> Q{comp};
-			Q.emplace(from, 0);
+				std::pair<T,int>,
+				std::vector<std::pair<T,int>>,
+				std::greater<std::pair<T,int>>
+					> Q;
+			Q.emplace(0,from);
+			std::vector<bool> fixed(_n);
 			while(!Q.empty()) {
-				auto [v, d] = Q.top(); Q.pop();
-				for (auto&& [u, w] : _graph[v]) {
-					if(dist[u]==-1 or d+w < dist[u]) {
-						dist[u]=d+w;
-						Q.emplace(u, d+w);
+				auto [d,v] = Q.top(); Q.pop();
+				if(fixed[v]) continue;
+				fixed[v]=true;
+				for (auto&& [w,u] : _graph[v]) {
+					if(dist_pred[u].first==-1 or d+w < dist_pred[u].first) {
+						dist_pred[u]=std::make_pair(d+w,v);
+						Q.emplace(d+w,u);
 					}
 				}
 			}
-			return dist;
+			return dist_pred;
 		}
 
 	private:
 		int _n;
-		std::vector<std::vector<std::pair<int,T>>> _graph;
+		std::vector<std::vector<std::pair<T,int>>> _graph;
 };
