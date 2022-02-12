@@ -1,4 +1,4 @@
-#include"../data_structure/fenwicktree.hpp"
+#include"atcoder/fenwicktree"
 
 long long prime_pi(long long N) { // ref : Meissel–Lehmer algorithm
 	int a=std::cbrt(N), b=std::sqrt(N), c=N/a;
@@ -16,7 +16,7 @@ long long prime_pi(long long N) { // ref : Meissel–Lehmer algorithm
 	for(int i=1; i<=a; i++) ret+=mu[i]*(N/i); // ordinary leaves
 	std::vector<bool> S(c+1,true);
 	S[0]=S[1]=false;
-	fenwick_tree<int> phi(c+1);
+	atcoder::fenwick_tree<int> phi(c+1);
 	for(int i=0; i<pia; i++) { // special leaves
 		for(int j=P[i]+1; j<=a; j++) {
 			if(f[j]>P[i] && j*P[i]>a)
