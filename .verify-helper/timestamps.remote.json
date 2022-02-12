@@ -4,7 +4,7 @@
 "test/library_checker/point_add_range_sum.test.cpp": "2022-02-11 03:46:25 +0900",
 "test/library_checker/predecessor_problem.test.cpp": "2022-02-11 03:46:25 +0900",
 "test/prime/factorize.test.cpp": "2022-02-10 04:20:06 +0900",
-"test/prime/pi.test.cpp": "2022-02-11 03:46:25 +0900",
+"test/prime/pi.test.cpp": "2022-02-12 22:23:59 +0900",
 "test/prime/sieve.test.cpp": "2022-02-10 08:48:32 +0900",
 "test/string/RollingHash.test.cpp": "2022-02-10 03:49:20 +0900"
 }
