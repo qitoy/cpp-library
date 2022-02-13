@@ -6,6 +6,13 @@ struct segtree {
 		segtree()=default;
 		explicit segtree(int n)
 			: _n(n), _vec(2*n, M::e) { }
+		explicit segtree(std::vector<T>& vec)
+			: _n(vec.size()), _vec(2*_n) {
+				for (int i = 0; i < _n; i++) 
+					_vec[_n+i]=vec[i];
+				for (int i = _n-1; i > 0; i--)
+					_vec[i]=M::op(_vec[i<<1|0], _vec[i<<1|1]);
+			}
 
 		void set(int p, T x) {
 			assert(0<=p and p<_n);
