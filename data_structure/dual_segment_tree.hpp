@@ -14,8 +14,8 @@ class dual_segtree {
 		l+=_n; r+=_n;
 		prepare(l); prepare(r);
 		while(l<r) {
-			if(l&1) com(_vec[l++], x);
-			if(r&1) com(_vec[--r], x);
+			if(l&1) adapt(_vec[l++], x);
+			if(r&1) adapt(_vec[--r], x);
 			l>>=1; r>>=1;
 		}
 	}
@@ -25,7 +25,7 @@ class dual_segtree {
 		p+=_n;
 		T ret=M::e;
 		while(p>0) {
-			com(ret, _vec[p]);
+			adapt(ret, _vec[p]);
 			p>>=1;
 		}
 		return ret;
@@ -35,17 +35,17 @@ class dual_segtree {
 		int _n;
 		std::vector<T> _vec;
 
-		void com(T& f, T g) { f=M::op(f, g); }
+		void adapt(T& f, T g) { f=M::op(f, g); }
 
 		void push(int p) {
-			com(_vec[p<<1|0], _vec[p]);
-			com(_vec[p<<1|1], _vec[p]);
+			adapt(_vec[p<<1|0], _vec[p]);
+			adapt(_vec[p<<1|1], _vec[p]);
 			_vec[p]=M::e;
 		}
 
 		void prepare(int p) {
 			if(p==0) return;
-			while(p&1==0) p>>=1;
+			while((p&1)==0) p>>=1;
 			for(int i=31-__builtin_clz(p); i>0; i--)
 				push(p>>i);
 		}
