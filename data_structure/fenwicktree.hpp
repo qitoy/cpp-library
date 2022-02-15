@@ -38,7 +38,7 @@ template <class T> struct fenwick_tree {
 	int lower_bound(T x) {
 		if(x <= 0) return -1;
 		int l=0;
-		for(int k=1<<(32-__builtin_clz(_n)); k>0; k>>=1) {
+		for(int k=1<<(31-__builtin_clz(_n)); k>0; k>>=1) {
 			if(l+k <= _n and data[l+k-1] < x) {
 				x-=data[l+k-1];
 				l+=k;

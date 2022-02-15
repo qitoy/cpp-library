@@ -1,8 +1,8 @@
 template<class M>
-struct segtree {
-	public:
+class segtree {
 		using T=typename M::type;
 
+	public:
 		segtree()=default;
 		explicit segtree(int n)
 			: _n(n), _vec(2*n, M::e) { }
