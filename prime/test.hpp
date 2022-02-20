@@ -1,3 +1,4 @@
+/*{{{ prime_test */
 constexpr bool prime_test(const long long N) { // Miller-Rabin test
 	if(N<=2) return N==2;
 	if(N%2==0) return false;
@@ -20,3 +21,4 @@ constexpr bool prime_test(const long long N) { // Miller-Rabin test
 	}
 	return true;
 }
+/*}}}*/

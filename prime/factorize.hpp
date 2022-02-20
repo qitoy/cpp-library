@@ -1,5 +1,6 @@
 #include "test.hpp"
 
+/*{{{ factorize */
 long long findfactor(long long N) {
 	if(N%2==0) return 2;
 	// Pollard's rho algorithm, improved by Brent
@@ -39,3 +40,4 @@ std::vector<long long> factorize(long long N) {
 	std::sort(vec.begin(), vec.end());
 	return vec;
 }
+/*}}}*/

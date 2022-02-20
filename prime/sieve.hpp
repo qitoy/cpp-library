@@ -1,3 +1,4 @@
+/*{{{ prime_sieve */
 std::vector<bool> prime_sieve(int N) {
 	std::vector<bool> _isPrime(N+1, true);
 	_isPrime[0]=_isPrime[1]=false;
@@ -6,3 +7,4 @@ std::vector<bool> prime_sieve(int N) {
 		for(int j=i; i*j<=N; j+=2) _isPrime[i*j]=false;
 	return _isPrime;
 }
+/*}}}*/
