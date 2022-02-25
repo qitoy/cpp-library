@@ -8,6 +8,7 @@
 "test/library_checker/point_set_range_composite.test.cpp": "2022-02-15 20:49:54 +0900",
 "test/library_checker/predecessor_problem.test.cpp": "2022-02-15 20:49:54 +0900",
 "test/library_checker/shortest_path.test.cpp": "2022-02-18 04:00:20 +0900",
+"test/math/binomial.test.cpp": "2022-02-25 16:49:56 +0900",
 "test/monoid/maybe.test.cpp": "2022-02-15 20:49:54 +0900",
 "test/prime/factorize.test.cpp": "2022-02-21 03:24:01 +0900",
 "test/prime/pi.test.cpp": "2022-02-21 03:24:01 +0900",
