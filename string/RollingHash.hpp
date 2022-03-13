@@ -1,14 +1,19 @@
+#include <string>
+#include <vector>
+#include <random>
 /*
  * 参考：
  * 安全で爆速なRolling Hashの話 https://togetter.com/li/1413936
  */
 
+// {{{ RollingHash
 class RollingHash {
 
 	using u64  = unsigned long long;
 	using u128 = unsigned __int128;
 
 	public:
+	RollingHash() {}
 	RollingHash(std::string const& S)
 		: _n(S.size()), _base1(_n+1), _base2(_n+1), _hash1(_n+1), _hash2(_n+1) {
 			_base1[0]=_base2[0]=1;
@@ -40,3 +45,4 @@ class RollingHash {
 
 unsigned long long RollingHash::_b1=std::random_device()()+128,
                    RollingHash::_b2=std::random_device()()+128;
+// }}}
