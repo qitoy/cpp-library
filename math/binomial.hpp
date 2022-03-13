@@ -1,7 +1,7 @@
 template<int mod=1000000007>
 struct binomial {
 	public:
-		explicit binomial(std::size_t n)
+		explicit binomial(int n)
 			: _n(n), _fac(n+1), _inv(n+1), _finv(n+1) {
 			_fac[0]=_fac[1]=_finv[0]=_finv[1]=_inv[1]=1;
 			for (int i = 2; i <= _n; i++) {
@@ -18,6 +18,6 @@ struct binomial {
 		}
 
 	private:
-		std::size_t _n;
+		int _n;
 		std::vector<int> _fac, _inv, _finv;
 };
