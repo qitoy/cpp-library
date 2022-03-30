@@ -1,5 +1,8 @@
 #pragma once
 
+#include <vector>
+#include <cassert>
+
 template<class T>
 struct adjacency_list {
 	adjacency_list()=default;

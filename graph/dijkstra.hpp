@@ -1,3 +1,7 @@
+#pragma once
+
+#include <queue>
+
 #include"adjacency_list.hpp"
 
 template<class T>
