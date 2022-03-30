@@ -25,7 +25,7 @@ int main(){
 	int N,Q; cin >> N >> Q;
 	vector<linear::type> V(N);
 	for(auto&& [a,b]:V) cin >> a >> b;
-	segtree<linear> S(V);
+	segment_tree<linear> S(V);
 	while(Q--) {
 		int q; cin >> q;
 		if(q==0) {

@@ -1,12 +1,15 @@
+#include <cassert>
+#include <vector>
+
 template<class M>
-class segtree {
+class segment_tree {
 		using T=typename M::type;
 
 	public:
-		segtree()=default;
-		explicit segtree(int n)
+		segment_tree()=default;
+		explicit segment_tree(int n)
 			: _n(n), _vec(2*n, M::e) { }
-		explicit segtree(std::vector<T>& vec)
+		explicit segment_tree(std::vector<T>& vec)
 			: _n(vec.size()), _vec(2*_n) {
 				for (int i = 0; i < _n; i++) 
 					_vec[_n+i]=vec[i];

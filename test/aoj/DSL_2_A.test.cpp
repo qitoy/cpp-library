@@ -10,7 +10,7 @@ int main(){
 	ios_base::sync_with_stdio(false);
 
 	int n,q; cin >> n >> q;
-	segtree<min_m<int>> S(n);
+	segment_tree<min_m<int>> S(n);
 	while(q--) {
 		int com, x, y; cin >> com >> x >> y;
 		if(com==0) S.set(x,y);
