@@ -1,3 +1,5 @@
+#pragma once
+
 #include <string>
 #include <vector>
 #include <random>
@@ -35,14 +37,12 @@ class RollingHash {
 	private:
 	const u64 mod=(1ull<<61)-1;
 	int _n;
-	static u64 _b1, _b2;
+	inline static const u64 _b1=std::random_device()()+128,
+							_b2=std::random_device()()+128;
 	std::vector<u64> _base1, _base2, _hash1, _hash2;
 	u64 mul(u128 a, u128 b) const {
 		u128 t=a*b; t=(t>>61)+(t&mod);
 		return t>=mod?t-mod:t;
 	}
 };
-
-unsigned long long RollingHash::_b1=std::random_device()()+128,
-                   RollingHash::_b2=std::random_device()()+128;
 // }}}
