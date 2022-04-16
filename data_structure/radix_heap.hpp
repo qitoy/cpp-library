@@ -13,18 +13,26 @@ struct radix_heap {
 			std::fill(heap_min, heap_min+65, std::numeric_limits<key_type>::max());
 		}
 
-		std::size_t size() { return sz; }
-		bool empty() { return sz==0; }
+		std::size_t size() const { return sz; }
+		bool empty() const { return sz==0; }
 
-		void push(const key_type k, const value_type v) {
+		void push(const key_type k, const value_type& v) {
 			assert(last<=k);
 			int i=bsr(k^last)+1;
 			heap[i].emplace_back(k,v);
 			heap_min[i]=std::min(heap_min[i],k);
 			sz++;
-		} 
+		}
 
-		std::pair<key_type, value_type> top() {
+		void push(const key_type k, value_type&& v) {
+			assert(last<=k);
+			int i=bsr(k^last)+1;
+			heap[i].emplace_back(k, std::move(v));
+			heap_min[i]=std::min(heap_min[i],k);
+			sz++;
+		}
+
+		const std::pair<key_type, value_type>& top() {
 			pull();
 			return heap[0].back();
 		}
@@ -32,7 +40,6 @@ struct radix_heap {
 		void pop() {
 			pull();
 			heap[0].pop_back();
-			if(heap[0].empty()) heap_min[0]=std::numeric_limits<key_type>::max();
 			sz--;
 		}
 
@@ -52,6 +59,7 @@ struct radix_heap {
 			int i=1;
 			while(heap[i].empty()) i++;
 			last=heap_min[i];
+			heap_min[0]=last;
 			for(auto [k,v]:heap[i]) push(k,v);
 			sz-=heap[i].size();
 			heap[i].clear();
