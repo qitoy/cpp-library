@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/associative_array"
-#include<bits/stdc++.h>
-#include"../../vector/coordinate_compression.hpp"
+#include <bits/stdc++.h>
+#include "vector/coordinate_compression.hpp"
 using namespace std;
 
 int main(){

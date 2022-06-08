@@ -1,3 +1,6 @@
+#include <optional>
+#include <utility>
+
 template<class S>
 class maybe {
 	using T=std::optional<typename S::type>;

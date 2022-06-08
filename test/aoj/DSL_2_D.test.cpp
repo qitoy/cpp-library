@@ -1,7 +1,7 @@
 #define PROBLEM "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_D"
-#include<bits/stdc++.h>
-#include"../../data_structure/dual_segment_tree.hpp"
-#include"../../monoid/maybe.hpp"
+#include <bits/stdc++.h>
+#include "data_structure/dual_segment_tree.hpp"
+#include "monoid/maybe.hpp"
 using namespace std;
 
 template<class T>

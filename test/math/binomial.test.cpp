@@ -1,6 +1,6 @@
 #define PROBLEM "https://atcoder.jp/contests/abc145/tasks/abc145_d"
-#include<bits/stdc++.h>
-#include"../../math/binomial.hpp"
+#include <bits/stdc++.h>
+#include "math/binomial.hpp"
 using namespace std;
 
 int main(){

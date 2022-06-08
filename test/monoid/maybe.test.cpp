@@ -1,7 +1,7 @@
 #define PROBLEM "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_1_A"
-#include<bits/stdc++.h>
-#include"../../monoid/add_m.hpp"
-#include"../../monoid/maybe.hpp"
+#include <bits/stdc++.h>
+#include "monoid/add_m.hpp"
+#include "monoid/maybe.hpp"
 using namespace std;
 
 struct C {

@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/point_set_range_composite"
-#include<bits/stdc++.h>
-#include"../../data_structure/segment_tree.hpp"
+#include <bits/stdc++.h>
+#include "data_structure/segment_tree.hpp"
 using namespace std;
 
 constexpr int mod=998244353;
