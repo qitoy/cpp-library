@@ -55,8 +55,8 @@ data:
   timestamp: '2022-03-31 04:58:03+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/library_checker/shortest_path.test.cpp
   - test/graph/dijkstra.test.cpp
+  - test/library_checker/shortest_path.test.cpp
 documentation_of: graph/dijkstra.hpp
 layout: document
 redirect_from:

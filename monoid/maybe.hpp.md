@@ -31,8 +31,8 @@ data:
   timestamp: '2022-06-08 13:10:37+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/aoj/DSL_2_D.test.cpp
   - test/monoid/maybe.test.cpp
+  - test/aoj/DSL_2_D.test.cpp
 documentation_of: monoid/maybe.hpp
 layout: document
 redirect_from:

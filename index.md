@@ -84,8 +84,14 @@ data:
   - name: utility
     pages:
     - icon: ':warning:'
+      path: utility/RLE.hpp
+      title: utility/RLE.hpp
+    - icon: ':warning:'
       path: utility/bit_cast.hpp
       title: utility/bit_cast.hpp
+    - icon: ':warning:'
+      path: utility/hilbertOrder.hpp
+      title: utility/hilbertOrder.hpp
   - name: vector
     pages:
     - icon: ':heavy_check_mark:'

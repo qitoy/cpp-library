@@ -43,14 +43,14 @@ data:
   isVerificationFile: false
   path: graph/adjacency_list.hpp
   requiredBy:
-  - graph/dijkstra.hpp
   - graph/prim.hpp
+  - graph/dijkstra.hpp
   timestamp: '2022-03-31 04:58:03+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/ALDS1_12_A.test.cpp
-  - test/library_checker/shortest_path.test.cpp
   - test/graph/dijkstra.test.cpp
+  - test/library_checker/shortest_path.test.cpp
 documentation_of: graph/adjacency_list.hpp
 layout: document
 redirect_from:
