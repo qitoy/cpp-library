@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/dual_segment_tree.hpp
     title: data_structure/dual_segment_tree.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: monoid/maybe.hpp
     title: monoid/maybe.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_D
@@ -29,10 +29,10 @@ data:
     \t\t\twhile(p>0) {\n\t\t\t\tadapt(ret, _vec[p]);\n\t\t\t\tp>>=1;\n\t\t\t}\n\t\t\
     \treturn ret;\n\t\t}\n\n\tprivate:\n\t\tint _n;\n\t\tstd::vector<T> _vec;\n\n\t\
     \tvoid adapt(T& f, T g) { f=M::op(f, g); }\n\n\t\tvoid push(int p) {\n\t\t\tadapt(_vec[p<<1|0],\
-    \ _vec[p]);\n\t\t\tadapt(_vec[p<<1|1], _vec[p]);\n\t\t\t_vec[p]=M::e;\n\t\t}\n\
-    \n\t\tvoid prepare(int p) {\n\t\t\tif(p==0) return;\n\t\t\twhile((p&1)==0) p>>=1;\n\
-    \t\t\tfor(int i=31-__builtin_clz(p); i>0; i--)\n\t\t\t\tpush(p>>i);\n\t\t}\n};\n\
-    #line 1 \"monoid/maybe.hpp\"\n#include <optional>\n#line 3 \"monoid/maybe.hpp\"\
+    \ _vec[p]);\n\t\t\tadapt(_vec[p<<1|1], _vec[p]);\n\t\t\t_vec[p]=M::e();\n\t\t\
+    }\n\n\t\tvoid prepare(int p) {\n\t\t\tif(p==0) return;\n\t\t\twhile((p&1)==0)\
+    \ p>>=1;\n\t\t\tfor(int i=31-__builtin_clz(p); i>0; i--)\n\t\t\t\tpush(p>>i);\n\
+    \t\t}\n};\n#line 1 \"monoid/maybe.hpp\"\n#include <optional>\n#line 3 \"monoid/maybe.hpp\"\
     \n\ntemplate<class S>\nclass maybe {\n\tusing T=std::optional<typename S::type>;\n\
     \n\tpublic:\n\tusing type=T;\n\tstatic constexpr T op(T a, T b) {\n\t\tif(!a)\
     \ return b;\n\t\tif(!b) return a;\n\t\treturn T(std::in_place, S::op(*a, *b));\n\
@@ -60,8 +60,8 @@ data:
   isVerificationFile: true
   path: test/aoj/DSL_2_D.test.cpp
   requiredBy: []
-  timestamp: '2022-11-17 23:31:39+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2022-11-17 23:40:02+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/DSL_2_D.test.cpp
 layout: document

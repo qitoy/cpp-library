@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/DSL_2_D.test.cpp
     title: test/aoj/DSL_2_D.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"data_structure/dual_segment_tree.hpp\"\n#include <cassert>\n\
@@ -23,7 +23,7 @@ data:
     \t\t\t}\n\t\t\treturn ret;\n\t\t}\n\n\tprivate:\n\t\tint _n;\n\t\tstd::vector<T>\
     \ _vec;\n\n\t\tvoid adapt(T& f, T g) { f=M::op(f, g); }\n\n\t\tvoid push(int p)\
     \ {\n\t\t\tadapt(_vec[p<<1|0], _vec[p]);\n\t\t\tadapt(_vec[p<<1|1], _vec[p]);\n\
-    \t\t\t_vec[p]=M::e;\n\t\t}\n\n\t\tvoid prepare(int p) {\n\t\t\tif(p==0) return;\n\
+    \t\t\t_vec[p]=M::e();\n\t\t}\n\n\t\tvoid prepare(int p) {\n\t\t\tif(p==0) return;\n\
     \t\t\twhile((p&1)==0) p>>=1;\n\t\t\tfor(int i=31-__builtin_clz(p); i>0; i--)\n\
     \t\t\t\tpush(p>>i);\n\t\t}\n};\n"
   code: "#include <cassert>\n#include <vector>\n\ntemplate<class M>\nclass dual_segtree\
@@ -37,15 +37,15 @@ data:
     adapt(ret, _vec[p]);\n\t\t\t\tp>>=1;\n\t\t\t}\n\t\t\treturn ret;\n\t\t}\n\n\t\
     private:\n\t\tint _n;\n\t\tstd::vector<T> _vec;\n\n\t\tvoid adapt(T& f, T g) {\
     \ f=M::op(f, g); }\n\n\t\tvoid push(int p) {\n\t\t\tadapt(_vec[p<<1|0], _vec[p]);\n\
-    \t\t\tadapt(_vec[p<<1|1], _vec[p]);\n\t\t\t_vec[p]=M::e;\n\t\t}\n\n\t\tvoid prepare(int\
-    \ p) {\n\t\t\tif(p==0) return;\n\t\t\twhile((p&1)==0) p>>=1;\n\t\t\tfor(int i=31-__builtin_clz(p);\
-    \ i>0; i--)\n\t\t\t\tpush(p>>i);\n\t\t}\n};\n"
+    \t\t\tadapt(_vec[p<<1|1], _vec[p]);\n\t\t\t_vec[p]=M::e();\n\t\t}\n\n\t\tvoid\
+    \ prepare(int p) {\n\t\t\tif(p==0) return;\n\t\t\twhile((p&1)==0) p>>=1;\n\t\t\
+    \tfor(int i=31-__builtin_clz(p); i>0; i--)\n\t\t\t\tpush(p>>i);\n\t\t}\n};\n"
   dependsOn: []
   isVerificationFile: false
   path: data_structure/dual_segment_tree.hpp
   requiredBy: []
-  timestamp: '2022-11-17 23:31:39+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2022-11-17 23:40:02+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/DSL_2_D.test.cpp
 documentation_of: data_structure/dual_segment_tree.hpp

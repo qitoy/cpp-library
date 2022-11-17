@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: monoid/add_m.hpp
     title: monoid/add_m.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: monoid/maybe.hpp
     title: monoid/maybe.hpp
   _extendedRequiredBy: []

@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/segment_tree.hpp
     title: data_structure/segment_tree.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: monoid/min_m.hpp
     title: monoid/min_m.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_A
@@ -33,9 +33,9 @@ data:
     \t\tif(l&1) ret1=M::op(ret1, _vec[l++]);\n\t\t\t\tif(r&1) ret2=M::op(_vec[--r],\
     \ ret2);\n\t\t\t\tl>>=1; r>>=1;\n\t\t\t}\n\t\t\treturn M::op(ret1, ret2);\n\t\t\
     }\n\n\tprivate:\n\t\tint _n;\n\t\tstd::vector<T> _vec;\n};\n#line 3 \"monoid/min_m.hpp\"\
-    \n\ntemplate<class T>\nstruct min_m {\n\tusing type=T;\n\tstatic constexpr T op(const\
-    \ T& a, const T& b) { return std::min(a,b); }\n\tstatic constexpr T e=std::numeric_limits<T>::max();\n\
-    };\n#line 5 \"test/aoj/DSL_2_A.test.cpp\"\nusing namespace std;\n\nint main(){\n\
+    \n\ntemplate<class T>\nstruct min_m {\n\tusing type=T;\n\tstatic constexpr T op(T\
+    \ a, T b) { return std::min(a,b); }\n\tstatic constexpr T e() { return std::numeric_limits<T>::max();\
+    \ }\n};\n#line 5 \"test/aoj/DSL_2_A.test.cpp\"\nusing namespace std;\n\nint main(){\n\
     \n\tcin.tie(nullptr);\n\tios_base::sync_with_stdio(false);\n\n\tint n,q; cin >>\
     \ n >> q;\n\tsegment_tree<min_m<int>> S(n);\n\twhile(q--) {\n\t\tint com, x, y;\
     \ cin >> com >> x >> y;\n\t\tif(com==0) S.set(x,y);\n\t\tif(com==1) cout << S.prod(x,y+1)\
@@ -52,8 +52,8 @@ data:
   isVerificationFile: true
   path: test/aoj/DSL_2_A.test.cpp
   requiredBy: []
-  timestamp: '2022-11-17 23:31:39+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2022-11-17 23:40:02+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/DSL_2_A.test.cpp
 layout: document

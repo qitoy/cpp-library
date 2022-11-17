@@ -1,14 +1,14 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/segment_tree.hpp
     title: data_structure/segment_tree.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/point_set_range_composite
@@ -34,32 +34,32 @@ data:
     \nusing namespace std;\n\nconstexpr int mod=998244353;\n\nclass linear {\n\tusing\
     \ T=pair<int,int>;\n\n\tpublic:\n\tusing type=T;\n\tstatic constexpr T op(T f,\
     \ T g) {\n\t\treturn {(long long)f.first*g.first%mod,\n\t\t   ((long long)f.second*g.first+g.second)%mod};\
-    \ // g(f(x))\n\t}\n\tstatic constexpr T e{1,0};\n};\n\nint main(){\n\n\tcin.tie(nullptr);\n\
-    \tios_base::sync_with_stdio(false);\n\n\tint N,Q; cin >> N >> Q;\n\tvector<linear::type>\
-    \ V(N);\n\tfor(auto&& [a,b]:V) cin >> a >> b;\n\tsegment_tree<linear> S(V);\n\t\
-    while(Q--) {\n\t\tint q; cin >> q;\n\t\tif(q==0) {\n\t\t\tint p,c,d; cin >> p\
-    \ >> c >> d;\n\t\t\tS.set(p, make_pair(c,d));\n\t\t}\n\t\tif(q==1) {\n\t\t\tint\
-    \ l,r,x; cin >> l >> r >> x;\n\t\t\tauto&& [a,b]=S.prod(l,r);\n\t\t\tcout << ((long\
-    \ long)a*x+b)%mod << '\\n';\n\t\t}\n\t}\n\n}\n"
+    \ // g(f(x))\n\t}\n\tstatic constexpr T e(){return {1,0};}\n};\n\nint main(){\n\
+    \n\tcin.tie(nullptr);\n\tios_base::sync_with_stdio(false);\n\n\tint N,Q; cin >>\
+    \ N >> Q;\n\tvector<linear::type> V(N);\n\tfor(auto&& [a,b]:V) cin >> a >> b;\n\
+    \tsegment_tree<linear> S(V);\n\twhile(Q--) {\n\t\tint q; cin >> q;\n\t\tif(q==0)\
+    \ {\n\t\t\tint p,c,d; cin >> p >> c >> d;\n\t\t\tS.set(p, make_pair(c,d));\n\t\
+    \t}\n\t\tif(q==1) {\n\t\t\tint l,r,x; cin >> l >> r >> x;\n\t\t\tauto&& [a,b]=S.prod(l,r);\n\
+    \t\t\tcout << ((long long)a*x+b)%mod << '\\n';\n\t\t}\n\t}\n\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/point_set_range_composite\"\
     \n#include <bits/stdc++.h>\n#include \"data_structure/segment_tree.hpp\"\nusing\
     \ namespace std;\n\nconstexpr int mod=998244353;\n\nclass linear {\n\tusing T=pair<int,int>;\n\
     \n\tpublic:\n\tusing type=T;\n\tstatic constexpr T op(T f, T g) {\n\t\treturn\
     \ {(long long)f.first*g.first%mod,\n\t\t   ((long long)f.second*g.first+g.second)%mod};\
-    \ // g(f(x))\n\t}\n\tstatic constexpr T e{1,0};\n};\n\nint main(){\n\n\tcin.tie(nullptr);\n\
-    \tios_base::sync_with_stdio(false);\n\n\tint N,Q; cin >> N >> Q;\n\tvector<linear::type>\
-    \ V(N);\n\tfor(auto&& [a,b]:V) cin >> a >> b;\n\tsegment_tree<linear> S(V);\n\t\
-    while(Q--) {\n\t\tint q; cin >> q;\n\t\tif(q==0) {\n\t\t\tint p,c,d; cin >> p\
-    \ >> c >> d;\n\t\t\tS.set(p, make_pair(c,d));\n\t\t}\n\t\tif(q==1) {\n\t\t\tint\
-    \ l,r,x; cin >> l >> r >> x;\n\t\t\tauto&& [a,b]=S.prod(l,r);\n\t\t\tcout << ((long\
-    \ long)a*x+b)%mod << '\\n';\n\t\t}\n\t}\n\n}\n"
+    \ // g(f(x))\n\t}\n\tstatic constexpr T e(){return {1,0};}\n};\n\nint main(){\n\
+    \n\tcin.tie(nullptr);\n\tios_base::sync_with_stdio(false);\n\n\tint N,Q; cin >>\
+    \ N >> Q;\n\tvector<linear::type> V(N);\n\tfor(auto&& [a,b]:V) cin >> a >> b;\n\
+    \tsegment_tree<linear> S(V);\n\twhile(Q--) {\n\t\tint q; cin >> q;\n\t\tif(q==0)\
+    \ {\n\t\t\tint p,c,d; cin >> p >> c >> d;\n\t\t\tS.set(p, make_pair(c,d));\n\t\
+    \t}\n\t\tif(q==1) {\n\t\t\tint l,r,x; cin >> l >> r >> x;\n\t\t\tauto&& [a,b]=S.prod(l,r);\n\
+    \t\t\tcout << ((long long)a*x+b)%mod << '\\n';\n\t\t}\n\t}\n\n}\n"
   dependsOn:
   - data_structure/segment_tree.hpp
   isVerificationFile: true
   path: test/library_checker/point_set_range_composite.test.cpp
   requiredBy: []
-  timestamp: '2022-11-17 23:31:39+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2022-11-17 23:40:02+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/library_checker/point_set_range_composite.test.cpp
 layout: document
