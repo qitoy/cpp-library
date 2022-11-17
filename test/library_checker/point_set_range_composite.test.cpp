@@ -14,7 +14,7 @@ class linear {
 		return {(long long)f.first*g.first%mod,
 		   ((long long)f.second*g.first+g.second)%mod}; // g(f(x))
 	}
-	static constexpr T e{1,0};
+	static constexpr T e(){return {1,0};}
 };
 
 int main(){

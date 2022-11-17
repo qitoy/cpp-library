@@ -44,7 +44,7 @@ class dual_segtree {
 		void push(int p) {
 			adapt(_vec[p<<1|0], _vec[p]);
 			adapt(_vec[p<<1|1], _vec[p]);
-			_vec[p]=M::e;
+			_vec[p]=M::e();
 		}
 
 		void prepare(int p) {
