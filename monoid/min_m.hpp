@@ -1,3 +1,6 @@
+#include <algorithm>
+#include <limits>
+
 template<class T>
 struct min_m {
 	using type=T;

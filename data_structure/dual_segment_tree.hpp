@@ -11,7 +11,7 @@ class dual_segtree {
 
 		dual_segtree()=default;
 		explicit dual_segtree(int n)
-			: _n(n), _vec(2*n, M::e) {}
+			: _n(n), _vec(2*n, M::e()) {}
 
 		void add(int l, int r, T x) {
 			assert(0<=l and l<r and r<=_n);
@@ -27,7 +27,7 @@ class dual_segtree {
 		T get(int p) {
 			assert(0<=p and p<_n);
 			p+=_n;
-			T ret=M::e;
+			T ret=M::e();
 			while(p>0) {
 				adapt(ret, _vec[p]);
 				p>>=1;

@@ -8,7 +8,7 @@ class segment_tree {
 	public:
 		segment_tree()=default;
 		explicit segment_tree(int n)
-			: _n(n), _vec(2*n, M::e) { }
+			: _n(n), _vec(2*n, M::e()) { }
 		explicit segment_tree(std::vector<T>& vec)
 			: _n(vec.size()), _vec(2*_n) {
 				for (int i = 0; i < _n; i++) 
@@ -35,7 +35,7 @@ class segment_tree {
 
 		T prod(int l, int r) {
 			assert(0<=l and l<=r and r<=_n);
-			T ret1=M::e, ret2=M::e;
+			T ret1=M::e(), ret2=M::e();
 			l+=_n; r+=_n;
 			while(l<r) {
 				if(l&1) ret1=M::op(ret1, _vec[l++]);

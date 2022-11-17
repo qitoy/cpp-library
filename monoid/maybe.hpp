@@ -7,10 +7,10 @@ class maybe {
 
 	public:
 	using type=T;
-	static constexpr T op(const T& a, const T& b) noexcept {
+	static constexpr T op(T a, T b) {
 		if(!a) return b;
 		if(!b) return a;
 		return T(std::in_place, S::op(*a, *b));
 	}
-	static constexpr T e=std::nullopt;
+	static constexpr T e() { return std::nullopt; }
 };
