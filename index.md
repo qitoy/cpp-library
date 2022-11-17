@@ -3,7 +3,7 @@ data:
   libraryCategories:
   - name: data_structure
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: data_structure/dual_segment_tree.hpp
       title: data_structure/dual_segment_tree.hpp
     - icon: ':heavy_check_mark:'
@@ -15,7 +15,7 @@ data:
     - icon: ':warning:'
       path: data_structure/radix_heap.hpp
       title: data_structure/radix_heap.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: data_structure/segment_tree.hpp
       title: data_structure/segment_tree.hpp
     - icon: ':heavy_check_mark:'
@@ -50,10 +50,10 @@ data:
     - icon: ':warning:'
       path: monoid/max_m.hpp
       title: monoid/max_m.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: monoid/maybe.hpp
       title: monoid/maybe.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: monoid/min_m.hpp
       title: monoid/min_m.hpp
     - icon: ':warning:'
@@ -106,10 +106,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/aoj/DSL_1_B.test.cpp
       title: test/aoj/DSL_1_B.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/aoj/DSL_2_A.test.cpp
       title: test/aoj/DSL_2_A.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/aoj/DSL_2_D.test.cpp
       title: test/aoj/DSL_2_D.test.cpp
   - name: test/graph
@@ -125,7 +125,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/library_checker/point_add_range_sum.test.cpp
       title: test/library_checker/point_add_range_sum.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/library_checker/point_set_range_composite.test.cpp
       title: test/library_checker/point_set_range_composite.test.cpp
     - icon: ':heavy_check_mark:'

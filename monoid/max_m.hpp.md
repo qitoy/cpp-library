@@ -9,17 +9,17 @@ data:
   attributes:
     links: []
   bundledCode: "#line 1 \"monoid/max_m.hpp\"\n#include <algorithm>\n#include <limits>\n\
-    \ntemplate<class T>\nstruct max_m {\n\tusing type=T;\n\tstatic constexpr T op(const\
-    \ T& a, const T& b) { return std::max(a,b); }\n\tstatic constexpr T e=std::numeric_limits<T>::min();\n\
-    };\n"
+    \ntemplate<class T>\nstruct max_m {\n\tusing type=T;\n\tstatic constexpr T op(T\
+    \ a, T b) { return std::max(a,b); }\n\tstatic constexpr T e() { return std::numeric_limits<T>::min();\
+    \ }\n};\n"
   code: "#include <algorithm>\n#include <limits>\n\ntemplate<class T>\nstruct max_m\
-    \ {\n\tusing type=T;\n\tstatic constexpr T op(const T& a, const T& b) { return\
-    \ std::max(a,b); }\n\tstatic constexpr T e=std::numeric_limits<T>::min();\n};\n"
+    \ {\n\tusing type=T;\n\tstatic constexpr T op(T a, T b) { return std::max(a,b);\
+    \ }\n\tstatic constexpr T e() { return std::numeric_limits<T>::min(); }\n};\n"
   dependsOn: []
   isVerificationFile: false
   path: monoid/max_m.hpp
   requiredBy: []
-  timestamp: '2022-04-16 05:03:52+09:00'
+  timestamp: '2022-11-17 23:31:39+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: monoid/max_m.hpp
