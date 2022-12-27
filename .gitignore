@@ -1,1 +1,5 @@
-bits/stdc++.h
+/bits/stdc++.h
+/boost/*
+!/boost/lib
+/boost/lib/*
+!/boost/lib/.gitkeep
