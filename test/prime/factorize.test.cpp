@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/factorize"
 #include <bits/stdc++.h>
-#include "prime/factorize.hpp"
+#include "qitoy/prime/factorize.hpp"
 using namespace std;
 
 int main(){

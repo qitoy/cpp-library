@@ -1,7 +1,7 @@
 #define PROBLEM "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A"
 #include <bits/stdc++.h>
-#include "graph/adjacency_list.hpp"
-#include "graph/dijkstra.hpp"
+#include "qitoy/graph/adjacency_list.hpp"
+#include "qitoy/graph/dijkstra.hpp"
 using namespace std;
 
 int main(){

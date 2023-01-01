@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/point_add_range_sum"
 #include <bits/stdc++.h>
-#include "data_structure/fenwicktree.hpp"
+#include "qitoy/data_structure/fenwicktree.hpp"
 using namespace std;
 
 int main(){
