@@ -2,8 +2,8 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: data_structure/weighted_unionfind.hpp
-    title: data_structure/weighted_unionfind.hpp
+    path: qitoy/data_structure/weighted_unionfind.hpp
+    title: qitoy/data_structure/weighted_unionfind.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -15,8 +15,8 @@ data:
     links:
     - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_1_B
   bundledCode: "#line 1 \"test/aoj/DSL_1_B.test.cpp\"\n#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_1_B\"\
-    \n#include <bits/stdc++.h>\n#line 4 \"data_structure/weighted_unionfind.hpp\"\n\
-    \ntemplate<class T>\nstruct weighted_uf {\n\tpublic:\n\t\tweighted_uf()=default;\n\
+    \n#include <bits/stdc++.h>\n#line 4 \"qitoy/data_structure/weighted_unionfind.hpp\"\
+    \n\ntemplate<class T>\nstruct weighted_uf {\n\tpublic:\n\t\tweighted_uf()=default;\n\
     \t\tweighted_uf(int n)\n\t\t\t: _n(n), parent_or_size(n, -1), diff_weight(n) {}\n\
     \n\t\tbool same(int x, int y) {\n\t\t\treturn root(x)==root(y);\n\t\t}\n\n\t\t\
     T diff(int x, int y) {\n\t\t\treturn weight(y)-weight(x);\n\t\t}\n\n\t\tbool merge(int\
@@ -36,7 +36,7 @@ data:
     \ cout << wuf.diff(x,y) << '\\n';\n\t\t\telse cout << '?' << '\\n';\n\t\t}\n\t\
     }\n\n}\n"
   code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_1_B\"\
-    \n#include <bits/stdc++.h>\n#include \"data_structure/weighted_unionfind.hpp\"\
+    \n#include <bits/stdc++.h>\n#include \"qitoy/data_structure/weighted_unionfind.hpp\"\
     \nusing namespace std;\n\nint main(){\n\n\tcin.tie(nullptr);\n\tios_base::sync_with_stdio(false);\n\
     \n\tint n,q; cin >> n >> q;\n\tweighted_uf<int> wuf(n);\n\twhile(q--) {\n\t\t\
     int c; cin >> c;\n\t\tif(c==0) {\n\t\t\tint x,y,z; cin >> x >> y >> z;\n\t\t\t\
@@ -44,11 +44,11 @@ data:
     \ cout << wuf.diff(x,y) << '\\n';\n\t\t\telse cout << '?' << '\\n';\n\t\t}\n\t\
     }\n\n}\n"
   dependsOn:
-  - data_structure/weighted_unionfind.hpp
+  - qitoy/data_structure/weighted_unionfind.hpp
   isVerificationFile: true
   path: test/aoj/DSL_1_B.test.cpp
   requiredBy: []
-  timestamp: '2022-06-08 13:10:37+09:00'
+  timestamp: '2023-01-01 21:12:37+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/DSL_1_B.test.cpp

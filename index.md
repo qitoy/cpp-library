@@ -1,102 +1,102 @@
 ---
 data:
   libraryCategories:
-  - name: data_structure
+  - name: qitoy/data_structure
     pages:
     - icon: ':heavy_check_mark:'
-      path: data_structure/dual_segment_tree.hpp
-      title: data_structure/dual_segment_tree.hpp
+      path: qitoy/data_structure/dual_segment_tree.hpp
+      title: qitoy/data_structure/dual_segment_tree.hpp
     - icon: ':heavy_check_mark:'
-      path: data_structure/fenwicktree.hpp
-      title: Fenwick Tree
+      path: qitoy/data_structure/fenwicktree.hpp
+      title: qitoy/data_structure/fenwicktree.hpp
     - icon: ':warning:'
-      path: data_structure/lazy_segment_tree.hpp
-      title: data_structure/lazy_segment_tree.hpp
+      path: qitoy/data_structure/lazy_segment_tree.hpp
+      title: qitoy/data_structure/lazy_segment_tree.hpp
     - icon: ':warning:'
-      path: data_structure/radix_heap.hpp
-      title: data_structure/radix_heap.hpp
+      path: qitoy/data_structure/radix_heap.hpp
+      title: qitoy/data_structure/radix_heap.hpp
     - icon: ':heavy_check_mark:'
-      path: data_structure/segment_tree.hpp
-      title: data_structure/segment_tree.hpp
+      path: qitoy/data_structure/segment_tree.hpp
+      title: qitoy/data_structure/segment_tree.hpp
     - icon: ':heavy_check_mark:'
-      path: data_structure/weighted_unionfind.hpp
-      title: data_structure/weighted_unionfind.hpp
-  - name: graph
+      path: qitoy/data_structure/weighted_unionfind.hpp
+      title: qitoy/data_structure/weighted_unionfind.hpp
+  - name: qitoy/graph
     pages:
     - icon: ':heavy_check_mark:'
-      path: graph/adjacency_list.hpp
-      title: graph/adjacency_list.hpp
+      path: qitoy/graph/adjacency_list.hpp
+      title: qitoy/graph/adjacency_list.hpp
     - icon: ':heavy_check_mark:'
-      path: graph/dijkstra.hpp
-      title: graph/dijkstra.hpp
+      path: qitoy/graph/dijkstra.hpp
+      title: qitoy/graph/dijkstra.hpp
     - icon: ':heavy_check_mark:'
-      path: graph/prim.hpp
-      title: graph/prim.hpp
-  - name: hash
+      path: qitoy/graph/prim.hpp
+      title: qitoy/graph/prim.hpp
+  - name: qitoy/hash
     pages:
     - icon: ':warning:'
-      path: hash/pair.hpp
-      title: hash/pair.hpp
-  - name: math
+      path: qitoy/hash/pair.hpp
+      title: qitoy/hash/pair.hpp
+  - name: qitoy/math
     pages:
     - icon: ':heavy_check_mark:'
-      path: math/binomial.hpp
-      title: math/binomial.hpp
-  - name: monoid
+      path: qitoy/math/binomial.hpp
+      title: qitoy/math/binomial.hpp
+  - name: qitoy/monoid
     pages:
     - icon: ':heavy_check_mark:'
-      path: monoid/add_m.hpp
-      title: monoid/add_m.hpp
+      path: qitoy/monoid/add_m.hpp
+      title: qitoy/monoid/add_m.hpp
     - icon: ':warning:'
-      path: monoid/max_m.hpp
-      title: monoid/max_m.hpp
+      path: qitoy/monoid/max_m.hpp
+      title: qitoy/monoid/max_m.hpp
     - icon: ':heavy_check_mark:'
-      path: monoid/maybe.hpp
-      title: monoid/maybe.hpp
+      path: qitoy/monoid/maybe.hpp
+      title: qitoy/monoid/maybe.hpp
     - icon: ':heavy_check_mark:'
-      path: monoid/min_m.hpp
-      title: monoid/min_m.hpp
+      path: qitoy/monoid/min_m.hpp
+      title: qitoy/monoid/min_m.hpp
     - icon: ':warning:'
-      path: monoid/mod_m.hpp
-      title: monoid/mod_m.hpp
+      path: qitoy/monoid/mod_m.hpp
+      title: qitoy/monoid/mod_m.hpp
     - icon: ':warning:'
-      path: monoid/pair_m.hpp
-      title: monoid/pair_m.hpp
-  - name: prime
+      path: qitoy/monoid/pair_m.hpp
+      title: qitoy/monoid/pair_m.hpp
+  - name: qitoy/prime
     pages:
     - icon: ':heavy_check_mark:'
-      path: prime/factorize.hpp
-      title: prime/factorize.hpp
+      path: qitoy/prime/factorize.hpp
+      title: qitoy/prime/factorize.hpp
     - icon: ':heavy_check_mark:'
-      path: prime/pi.hpp
-      title: prime/pi.hpp
+      path: qitoy/prime/pi.hpp
+      title: qitoy/prime/pi.hpp
     - icon: ':heavy_check_mark:'
-      path: prime/sieve.hpp
-      title: prime/sieve.hpp
+      path: qitoy/prime/sieve.hpp
+      title: qitoy/prime/sieve.hpp
     - icon: ':heavy_check_mark:'
-      path: prime/test.hpp
-      title: prime/test.hpp
-  - name: string
+      path: qitoy/prime/test.hpp
+      title: qitoy/prime/test.hpp
+  - name: qitoy/string
     pages:
     - icon: ':heavy_check_mark:'
-      path: string/RollingHash.hpp
-      title: string/RollingHash.hpp
-  - name: utility
+      path: qitoy/string/RollingHash.hpp
+      title: qitoy/string/RollingHash.hpp
+  - name: qitoy/utility
     pages:
     - icon: ':warning:'
-      path: utility/RLE.hpp
-      title: utility/RLE.hpp
+      path: qitoy/utility/RLE.hpp
+      title: qitoy/utility/RLE.hpp
     - icon: ':warning:'
-      path: utility/bit_cast.hpp
-      title: utility/bit_cast.hpp
+      path: qitoy/utility/bit_cast.hpp
+      title: qitoy/utility/bit_cast.hpp
     - icon: ':warning:'
-      path: utility/hilbertOrder.hpp
-      title: utility/hilbertOrder.hpp
-  - name: vector
+      path: qitoy/utility/hilbertOrder.hpp
+      title: qitoy/utility/hilbertOrder.hpp
+  - name: qitoy/vector
     pages:
     - icon: ':heavy_check_mark:'
-      path: vector/coordinate_compression.hpp
-      title: vector/coordinate_compression.hpp
+      path: qitoy/vector/coordinate_compression.hpp
+      title: qitoy/vector/coordinate_compression.hpp
   verificationCategories:
   - name: test/aoj
     pages:

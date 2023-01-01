@@ -2,8 +2,8 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: math/binomial.hpp
-    title: math/binomial.hpp
+    path: qitoy/math/binomial.hpp
+    title: qitoy/math/binomial.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -15,9 +15,9 @@ data:
     links:
     - https://atcoder.jp/contests/abc145/tasks/abc145_d
   bundledCode: "#line 1 \"test/math/binomial.test.cpp\"\n#define PROBLEM \"https://atcoder.jp/contests/abc145/tasks/abc145_d\"\
-    \n#include <bits/stdc++.h>\n#line 1 \"math/binomial.hpp\"\ntemplate<int mod=1000000007>\n\
-    struct binomial {\n\tpublic:\n\t\texplicit binomial(int n)\n\t\t\t: _n(n), _fac(n+1),\
-    \ _inv(n+1), _finv(n+1) {\n\t\t\t_fac[0]=_fac[1]=_finv[0]=_finv[1]=_inv[1]=1;\n\
+    \n#include <bits/stdc++.h>\n#line 1 \"qitoy/math/binomial.hpp\"\ntemplate<int\
+    \ mod=1000000007>\nstruct binomial {\n\tpublic:\n\t\texplicit binomial(int n)\n\
+    \t\t\t: _n(n), _fac(n+1), _inv(n+1), _finv(n+1) {\n\t\t\t_fac[0]=_fac[1]=_finv[0]=_finv[1]=_inv[1]=1;\n\
     \t\t\tfor (int i = 2; i <= _n; i++) {\n\t\t\t\t_fac[i]=(long long)_fac[i-1]*i%mod;\n\
     \t\t\t\t_inv[i]=mod-(long long)_inv[mod%i]*(mod/i)%mod;\n\t\t\t\t_finv[i]=(long\
     \ long)_finv[i-1]*_inv[i]%mod;\n\t\t\t}\n\t\t}\n\n\t\tint calc(int n, int k) {\n\
@@ -29,17 +29,17 @@ data:
     \ 0 << '\\n'; return 0;\n\t}\n\tbinomial B(700000);\n\tcout << B.calc((X+Y)/3,\
     \ (2*X-Y)/3) << '\\n';\n\n}\n"
   code: "#define PROBLEM \"https://atcoder.jp/contests/abc145/tasks/abc145_d\"\n#include\
-    \ <bits/stdc++.h>\n#include \"math/binomial.hpp\"\nusing namespace std;\n\nint\
-    \ main(){\n\n\tcin.tie(nullptr);\n\tios_base::sync_with_stdio(false);\n\n\tint\
-    \ X,Y; cin >> X >> Y;\n\tif(2*X<Y or X>2*Y or (X+Y)%3!=0) {\n\t\tcout << 0 <<\
+    \ <bits/stdc++.h>\n#include \"qitoy/math/binomial.hpp\"\nusing namespace std;\n\
+    \nint main(){\n\n\tcin.tie(nullptr);\n\tios_base::sync_with_stdio(false);\n\n\t\
+    int X,Y; cin >> X >> Y;\n\tif(2*X<Y or X>2*Y or (X+Y)%3!=0) {\n\t\tcout << 0 <<\
     \ '\\n'; return 0;\n\t}\n\tbinomial B(700000);\n\tcout << B.calc((X+Y)/3, (2*X-Y)/3)\
     \ << '\\n';\n\n}\n"
   dependsOn:
-  - math/binomial.hpp
+  - qitoy/math/binomial.hpp
   isVerificationFile: true
   path: test/math/binomial.test.cpp
   requiredBy: []
-  timestamp: '2022-06-08 13:10:37+09:00'
+  timestamp: '2023-01-01 21:12:37+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/math/binomial.test.cpp
